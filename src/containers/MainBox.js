@@ -7,32 +7,32 @@ class MainBox extends React.Component {
   constructor(){
     super()
     this.state = {
-      menuBarSelection: "profile"
+      menuBarSelection: ""
     }
   }
 
 
   changeMenuBarSelection = (e) => {
+    let sel 
+    if (e.target.id === "pokemon"){
+      sel = <Pokemon />
+    } else if (e.target.id === "cocktail"){
+      sel = <Cocktails/>
+    } else if (e.target.id === "photo"){
+      sel = <Photos/>
+    } else if (e.target.id === "profile"){
+      sel = <Profile />
+    }
     this.setState({
-      menuBarSelection: e.target.id
+      menuBarSelection: sel
     })
   }
 
   render() {
 
-    let sel 
-    if (this.state.menuBarSelection === "pokemon"){
-      sel = <Pokemon />
-    } else if (this.state.menuBarSelection === "cocktail"){
-      sel = <Cocktails/>
-    } else if (this.state.menuBarSelection === "photo"){
-      sel = <Photos/>
-    } else if (this.state.menuBarSelection === "profile"){
-      sel = <Profile />
-    }
 
 
-    const detailsToDisplay = <div>{sel}</div>
+    const detailsToDisplay = <div>{this.state.menuBarSelection}</div>
 
     return (
       <div>
